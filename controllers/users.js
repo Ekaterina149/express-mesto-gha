@@ -22,7 +22,7 @@ module.exports.getUser = (req, res) => {
         return res.status(HTTP_STATUS_NOT_FOUND).send({ message: 'Пользователь с указанным _id не найден.' });
       }
       if (err.name === 'CastError') {
-        return res.status(HTTP_STATUS_BAD_REQUEST).send({message: 'Передан некорректный _id пользователя' });
+        return res.status(HTTP_STATUS_BAD_REQUEST).send({ message: 'Передан некорректный _id пользователя' });
       }
 
       return res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).send({ message: 'Произошла ошибка' });

@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 app.use('/', router);
 app.use((req, res) => {
-  res.status(404).send({ message: "Sorry can't find that!"})
+  res.status(404).send({ message: "Sorry can't find that!" });
 });
 const { PORT = 3000 } = process.env;
 app.listen(PORT, () => {
