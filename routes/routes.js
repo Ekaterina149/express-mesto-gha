@@ -19,11 +19,11 @@ const {
 
 router.get('/users/:userId', getUser);
 router.get('/users', getUsers);
-router.post('/users',createUser);
+router.post('/users', createUser);
 router.patch('/users/me', updateUser);
-router.patch('/users/me/avatar',updateAvatar);
+router.patch('/users/me/avatar', updateAvatar);
 router.get('/cards', getCards);
-router.post('/cards',createCard);
+router.post('/cards', createCard);
 router.delete('/cards/:cardId', deleteCard);
 router.put('/cards/:cardId/likes', likeCard);
 router.delete('/cards/:cardId/likes', dislikeCard);
