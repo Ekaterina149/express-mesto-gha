@@ -1,5 +1,8 @@
+const httpConstants = require('http2').constants;
 const express = require('express');
 const mongoose = require('mongoose');
+
+const { HTTP_STATUS_NOT_FOUND } = httpConstants;
 
 const app = express();
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -22,7 +25,7 @@ app.use((req, res, next) => {
 
 app.use('/', router);
 app.use((req, res) => {
-  res.status(404).send({ message: "Sorry can't find that!" });
+  res.status(HTTP_STATUS_NOT_FOUND).send({ message: "Sorry can't find that!" });
 });
 const { PORT = 3000 } = process.env;
 app.listen(PORT, () => {
