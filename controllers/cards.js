@@ -25,15 +25,25 @@ module.exports.createCard = (req, res) => {
     });
 };
 module.exports.deleteCard = (req, res) => {
-  Card.findByIdAndRemove(req.params.cardId)
+  Card.findById(req.params.cardId)
     .orFail()
-    .then((card) => res.status(HTTP_STATUS_OK).send(card))
+    .then((card) => {
+      if (String(card.owner) !== String(req.user._id)) {
+        throw new Error('Недостаточно прав для удаления');
+      }
+      card.deleteOne();
+      res.status(HTTP_STATUS_OK).send(card)
+
+    })
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         return res.status(HTTP_STATUS_NOT_FOUND).send({ message: 'Карточка с указанным _id не найдена.' });
       }
       if (err.name === 'CastError') {
         return res.status(HTTP_STATUS_BAD_REQUEST).send({ message: 'Переданы некорректные данные при удалении карточки' });
+      }
+      if(err.name === 'Error') {
+        return res.status(403).send({ message: err.message  });
       }
       return res.status(HTTP_STATUS_INTERNAL_SERVER_ERROR).send({ message: 'Произошла ошибка' });
     });
