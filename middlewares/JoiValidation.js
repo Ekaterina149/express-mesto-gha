@@ -27,7 +27,7 @@ const updateAvatarJoi = celebrate({
 
 const createCardJoi = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30).required(),
     link: Joi.string().required().pattern(linkPattern),
   }).unknown(true),
 });
