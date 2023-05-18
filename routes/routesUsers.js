@@ -9,12 +9,12 @@ const {
   getCurrentUser
 } = require('../controllers/users');
 
-const { getUserByIdJoi, updateAvatarJoi } = require('../middlewares/JoiValidation');
+const { getUserByIdJoi, updateAvatarJoi, updateUserJoi } = require('../middlewares/JoiValidation');
 
 routerUsers.get('', getUsers);
 routerUsers.get('/me', getCurrentUser);
 routerUsers.get('/:userId', getUserByIdJoi, getUser);
-routerUsers.patch('/me', updateUser);
+routerUsers.patch('/me', updateUserJoi, updateUser);
 routerUsers.patch('/me/avatar', updateAvatarJoi, updateAvatar);
 
 

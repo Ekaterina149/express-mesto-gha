@@ -5,6 +5,7 @@ const { errors } = require('celebrate');
 
 const { HTTP_STATUS_NOT_FOUND } = httpConstants;
 const { createUser, login } = require('./controllers/users');
+const {createUserJoi, loginUserJoi} = require('./middlewares/JoiValidation');
 const authMiddleware = require('./middlewares/auth');
 
 
@@ -22,8 +23,8 @@ app.use(cookieParser());
 mongoose.connect('mongodb://127.0.0.1/mestodb ', {
   useNewUrlParser: true,
 });
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.post('/signin', loginUserJoi, login);
+app.post('/signup', createUserJoi, createUser);
 app.use(authMiddleware);
 app.use('/users', routerUsers);
 app.use('/cards', routerCards);
