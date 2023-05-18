@@ -9,10 +9,12 @@ const {
 
 } = require('../controllers/cards');
 
+const { createCardJoi, checkCardIdJoi } = require('../middlewares/JoiValidation');
+
 routerCards.get('', getCards);
-routerCards.post('', createCard);
-routerCards.delete('/:cardId', deleteCard);
-routerCards.put('/:cardId/likes', likeCard);
-routerCards.delete('/:cardId/likes', dislikeCard);
+routerCards.post('', createCardJoi, createCard);
+routerCards.delete('/:cardId', checkCardIdJoi, deleteCard);
+routerCards.put('/:cardId/likes', checkCardIdJoi, likeCard);
+routerCards.delete('/:cardId/likes', checkCardIdJoi, dislikeCard);
 
 module.exports = routerCards;
