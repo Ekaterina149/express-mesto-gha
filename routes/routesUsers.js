@@ -11,10 +11,9 @@ const {
 
 const { getUserByIdJoi, updateAvatarJoi } = require('../middlewares/JoiValidation');
 
-
+routerUsers.get('', getUsers);
 routerUsers.get('/me', getCurrentUser);
 routerUsers.get('/:userId', getUserByIdJoi, getUser);
-routerUsers.get('', getUsers);
 routerUsers.patch('/me', updateUser);
 routerUsers.patch('/me/avatar', updateAvatarJoi, updateAvatar);
 

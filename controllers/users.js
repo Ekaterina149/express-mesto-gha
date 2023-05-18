@@ -118,7 +118,7 @@ module.exports.login = (req, res, next) => {
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 дней в миллисекундах
           });
 
-          return res.set('Set-Cookie', 'name=jwt').send({ message: 'Авторизация прошла успешно'})
+          return res.send({ message: 'Авторизация прошла успешно'})
         })
         })
         .catch((err)=> next(err))
