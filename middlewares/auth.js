@@ -8,20 +8,15 @@ module.exports = (req, res, next) => {
     return next(new AuthError('Токен остутствует или некорректен'));
   }
 
-
-
-   let payload;
-
+  let payload;
 
   try {
-     payload = jwt.verify(token, 'some-secret-key');
-   }
-  catch (err) {
-
-      next(new AuthError('Токен не верифицирован'));
+    payload = jwt.verify(token, 'some-secret-key');
+  } catch (err) {
+    next(new AuthError('Токен не верифицирован'));
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
-console.log(req.user);
-  next(); // пропускаем запрос дальше
+
+  return next(); // пропускаем запрос дальше
 };

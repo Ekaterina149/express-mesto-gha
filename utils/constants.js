@@ -1,5 +1,6 @@
 const httpConstants = require('http2').constants;
-  const {
+
+const {
   HTTP_STATUS_CREATED,
   HTTP_STATUS_BAD_REQUEST,
   HTTP_STATUS_NOT_FOUND,
@@ -9,7 +10,7 @@ const httpConstants = require('http2').constants;
   HTTP_STATUS_FORBIDDEN,
   HTTP_STATUS_CONFLICT,
 } = httpConstants;
-const linkPattern =  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
+const linkPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
 module.exports = {
   HTTP_STATUS_CREATED,
   HTTP_STATUS_BAD_REQUEST,
@@ -21,4 +22,3 @@ module.exports = {
   HTTP_STATUS_CONFLICT,
   linkPattern,
 };
-

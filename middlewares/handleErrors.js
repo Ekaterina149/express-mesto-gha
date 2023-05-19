@@ -1,5 +1,4 @@
-
-const {HTTP_STATUS_INTERNAL_SERVER_ERROR,} = require('../utils/constants')
+const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = require('../utils/constants');
 
 module.exports.handleErrors = (err, req, res, next) => {
   const { statusCode = HTTP_STATUS_INTERNAL_SERVER_ERROR, message } = err;
