@@ -12,7 +12,7 @@ const app = express();
 const routerUsers = require('./routes/routesUsers');
 const routerCards = require('./routes/routesCards');
 const { handleErrors } = require('./middlewares/handleErrors');
-const BadRequestError = require('./errors/badRequestError');
+const NotFoundError = require('./errors/notFoundError');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,7 +33,7 @@ app.use('/cards', routerCards);
 
 // eslint-disable-next-line no-unused-vars
 app.use((req, res) => {
-  throw new BadRequestError("Sorry can't find that!");
+  throw new NotFoundError("Sorry can't find that!");
 });
 app.use(errors({ message: 'Ошибка валидации Joi!' }));
 app.use(handleErrors);
